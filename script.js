@@ -1,52 +1,27 @@
-// function
 // 1
-function hello() {
-  console.log("this is function");
-}
-
-hello();
+// Array start with index 0
+const singer = ["vanda", "G-devit", "Tena", "Songha"];
+console.log(singer[0]);
+console.log(singer[1]);
+console.log(singer[2]);
+console.log(singer[3]);
+// singer.push("Khmer muy jivit"); add new to array
+// singer.pop();
+// singer.unshift("Rego");
+let NumOfsinger = singer.length;
+let index = singer.indexOf("vanda");
+console.log(NumOfsinger);
+console.log(index);
 
 // 2
-function welcome(name, age) {
-  console.log(`nice to meet you ${name}`);
-  console.log(`i'm ${age} years old`);
-}
+const singers = ["vanda", "G-devit", "Tena", "Songha"];
 
-welcome("seyha", 18);
+// for (i = 0; i <= singers.length; i++) {
+//   console.log(singers[i]);
+// }
+
 // 3
-
-function sum(x, y) {
-  let result = x + y;
-  return result;
+singers.sort().reverse();
+for (let singer of singers) {
+  console.log(singer);
 }
-let number = sum(2, 4);
-console.log(number);
-// console.log(sum(2, 4));
-
-// 4
-
-function isEven(number) {
-  if (number % 2 === 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
-console.log(isEven(10));
-
-// or write ternary operation
-function isEven(number) {
-  return number % 2 === 0 ? true : false;
-}
-console.log(isEven(3));
-
-// 5
-function isValidEmail(email) {
-  if (email.includes("@")) {
-    return "Your email is valid";
-  } else {
-    return "You need to check again";
-  }
-}
-console.log(isValidEmail("example@gmail.com"));
-console.log(isValidEmail("examplegmail.com"));
