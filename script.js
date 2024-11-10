@@ -29,7 +29,7 @@ weather(wait);
 
 // 3
 function sum(callback, x, y) {
-  let sumNum = x * y;
+  let sumNum = x + y;
   callback(sumNum);
 }
 function DisplaySum(sumNum) {
