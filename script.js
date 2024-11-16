@@ -1,45 +1,55 @@
-// 1
+//1
+// use to swap values
+let a = 1;
+let b = 2;
 
-class Rectagle {
-  constructor(width, height) {
-    this.width = width;
-    this.height = height;
-  }
-}
+[a, b] = [b, a];
 
-const square = new Rectagle(10, 30);
-console.log(square);
+console.log(a);
+console.log(b);
 
 //2
+//  swap 2 element in array
 
-class Product {
-  constructor(name, price) {
-    this.name = name;
-    this.price = price;
-  }
+const foods = ["apple", "banana", "orange", "grape", "pineapple"];
 
-  applyDiscount(discount) {
-    const newPrice = this.price * (1 - discount);
-    this.price = newPrice;
-  }
-}
+[foods[0], foods[2]] = [foods[2], foods[0]];
 
-const book = new Product("Book", 20);
-book.applyDiscount(0.5);
-console.log(book);
+console.log(foods);
 
 // 3
+// assign multiple values to multiple variables
 
-class Products {
-  constructor(name, price) {
-    this.name = name;
-    this.price = price;
-  }
-  discount() {
-    const newPrice = this.price * 0.6;
-    this.price = newPrice;
-  }
+[first, second, third, ...rest] = foods;
+
+console.log(first);
+console.log(second);
+console.log(third);
+console.log(rest);
+
+// 4
+// object destructuring
+
+const person = {
+  name: "Tena Wong",
+  age: "20",
+  address: "Kathmandu",
+};
+
+const { name, age, address, job = "unemployed" } = person;
+
+console.log(`name:${name}`);
+console.log(age);
+console.log(address);
+console.log(job);
+
+// 5
+// destructuring in functions parameters
+
+function DisplayPerson({ name, age, address }) {
+  console.log(`name:${name}`);
+  console.log(`age:${age}`);
+  console.log(address);
 }
-const product1 = new Products("Iphone", "999");
-product1.discount();
-console.log(product1.price);
+
+DisplayPerson(person);
