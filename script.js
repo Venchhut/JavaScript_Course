@@ -1,35 +1,31 @@
-//1
+// expression function
 
-const singers = ["vanda", "dv", "tena", "joma"];
+// const Welcome = function () {
+//   console.log("hello");
+// };
 
-singers.map((singer) => {
-  singer = singer.toUpperCase();
+// setTimeout(Welcome, 2000);
 
-  console.log(singer);
+setTimeout(function () {
+  console.log("hello");
+}, 2000);
+// 1
+const numbers = [1, 2, 3, 4, 5];
+
+const newNumbers = numbers.map(function (num) {
+  return num * 2;
 });
+console.log(newNumbers);
 
-// 2
+//2
 
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-numbers.map((number) => {
-  const result = Math.sqrt(number, 2);
-  console.log(result);
+const Count = [1, 2, 3, 4, 56];
+const newCount = Count.filter(function (num) {
+  return num % 2 !== 0;
 });
+console.log(newCount);
 
-// 3
-const items = [
-  "apple",
-  "banana",
-  "orange",
-  "grape",
-  "kiwi",
-  "strawberry",
-  "blueberry",
-  "lemon",
-  "peach",
-  "plum",
-];
-
-items.map((_, idex) => {
-  console.log(`${idex + 1}. ${items[idex]}`);
+const newCount2 = Count.map(function (num) {
+  return num.toLocaleString();
 });
+console.log(newCount2);
