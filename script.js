@@ -1,71 +1,71 @@
-// 1
-
-// const person = {
-//   fullName: "Naruto Uzumaki",
-//   position: "Jujutsu Kaisen",
-//   age: 19,
-//   job: "Ninja",
-//   hobbies: ["reading manga", "watching anime", "playing video games"],
-//   address: {
-//     city: "Konoha",
-//     state: "Hidden Leaf Village",
-//     country: "Naruto Land",
-//     postalCode: 12345,
-//   },
-// };
-
-// console.log(person.fullName);
-// console.log(person.hobbies[0]);
-// console.log(person.hobbies[2]);
-// console.log(person.address.city);
-
-// 2
-
-class Person {
-  constructor(fullName, position, age, job, hobbies, ...address) {
-    this.fullName = fullName;
-    this.position = position;
-    this.age = age;
-    this.job = job;
-    this.hobbies = hobbies;
-    this.address = new Address(...address);
-  }
-}
-
-class Address {
-  constructor(street, city, state) {
-    this.street = street;
-    this.city = city;
-    this.state = state;
-  }
-}
-
-const person = new Person(
-  "Naruto Uzumaki",
-  "Jujutsu Kaisen",
-  19,
-  "Ninja",
-  ["reading manga", "watching anime", "playing video games"],
-  "Konoha",
-  "Hidden Leaf Village",
-  "Naruto Land",
-  12345
-);
-console.log(person.hobbies);
-console.log(person.address.state);
-
-// 3
-
-let Persons = {
-  name: "Victor",
-  contact: {
-    phone: "123-456-7890",
-    email: "Rakie@example.com",
-    address: {
-      street: "123 maere street",
-      city: "phnom penh",
-    },
+const Products = [
+  {
+    id: 1,
+    name: "Laptop",
+    price: 20000,
+    description: "This is a laptop",
+    category: "Electronics",
   },
-};
-console.log(Persons.contact.email);
-console.log(Persons.contact.address.city);
+  {
+    id: 2,
+    name: "Phone",
+    price: 5000,
+    description: "This is a phone",
+    category: "Smart phones",
+  },
+  {
+    id: 3,
+    name: "Tablet",
+    price: 10000,
+    description: "This is a tablet",
+    category: "Electronics",
+  },
+];
+
+console.log(Products[1].category);
+console.log(Products[2].name);
+console.log(Products);
+
+// Add a new product
+// push() method adds an element to the end of an array
+Products.push({
+  id: 4,
+  name: "Camera",
+  price: 3000,
+  description: "This is a camera",
+  category: "Electronics",
+});
+
+console.log(Products);
+
+// Foreach loop
+// forEach() method executes a specified function once for each array element
+
+Products.forEach((item) => {
+  console.log(item.name);
+});
+
+// Map method
+// map() method creates a new array with the results of calling a function for every array element
+
+const newProducts = Products.map((item) => {
+  console.log(item.price);
+});
+
+// Filter method
+// filter() method creates a new array with all elements that pass the test implemented by the provided function
+
+const filteredProducts = Products.filter((item) => {
+  return item.price >= 5000;
+});
+
+console.log(filteredProducts.length);
+
+// Reduce method
+// reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value
+
+const total = Products.reduce((acc, item) => {
+  return acc + item.price;
+}, 0);
+
+console.log(total);
