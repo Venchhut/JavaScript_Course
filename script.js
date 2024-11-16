@@ -25,7 +25,7 @@ function User(name, age) {
   this.name = name;
   this.age = age;
   this.isAdmin = () => {
-    if (this.name >= "John") {
+    if (this.name === "John") {
       return true;
     }
     return false;
