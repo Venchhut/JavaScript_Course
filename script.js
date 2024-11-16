@@ -1,31 +1,68 @@
-// expression function
-
-// const Welcome = function () {
-//   console.log("hello");
-// };
-
-// setTimeout(Welcome, 2000);
-
-setTimeout(function () {
-  console.log("hello");
-}, 2000);
 // 1
-const numbers = [1, 2, 3, 4, 5];
+// expression function"
 
-const newNumbers = numbers.map(function (num) {
-  return num * 2;
-});
-console.log(newNumbers);
+// setTimeout(function hello() {
+//   console.log("Hello");
+// }, 3000);
+
+//use arrow function
+setTimeout(() => console.log("Hello"), 2000);
 
 //2
 
-const Count = [1, 2, 3, 4, 56];
-const newCount = Count.filter(function (num) {
-  return num % 2 !== 0;
-});
-console.log(newCount);
+const people = (name, country) => {
+  console.log(`who are you? my name is  ${name} i'm from ${country}`);
+};
 
-const newCount2 = Count.map(function (num) {
-  return num.toLocaleString();
-});
-console.log(newCount2);
+people("mohamed", "egypt");
+// 3
+const numbers = () => {
+  const arr = [1, 2, 3, 4, 5, 6];
+  arr.map((num) => {
+    if (num % 2 !== 0) {
+      return console.log(num);
+    }
+  });
+};
+numbers();
+
+//4
+const Items = () => {
+  const arr = [
+    {
+      name: "david",
+      age: 20,
+    },
+    {
+      name: "mohamed",
+      age: 22,
+    },
+  ];
+
+  arr.map((item) => {
+    return console.log(` hello ${item.name} i'm ${item.age}`);
+  });
+};
+Items();
+
+//5
+const products = [
+  { id: 1, name: "apple", price: 20 },
+  {
+    id: 2,
+    name: "banana",
+    price: 30,
+  },
+  {
+    id: 3,
+    name: "orange",
+    price: 40,
+  },
+];
+const Category = () => {
+  products.map((product) => {
+    return console.log(product);
+  });
+};
+
+Category();
