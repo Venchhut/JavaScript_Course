@@ -1,68 +1,41 @@
 // 1
-// expression function"
-
-// setTimeout(function hello() {
-//   console.log("Hello");
-// }, 3000);
-
-//use arrow function
-setTimeout(() => console.log("Hello"), 2000);
-
-//2
-
-const people = (name, country) => {
-  console.log(`who are you? my name is  ${name} i'm from ${country}`);
+//simple object
+const user = {
+  name: "John",
+  age: 30,
 };
 
-people("mohamed", "egypt");
-// 3
-const numbers = () => {
-  const arr = [1, 2, 3, 4, 5, 6];
-  arr.map((num) => {
-    if (num % 2 !== 0) {
-      return console.log(num);
+const admin = {
+  name: "Jane",
+  age: 28,
+};
+
+const moderator = {
+  name: "Bob",
+  age: 35,
+};
+
+console.log(user.age);
+console.log(admin.age);
+console.log(moderator.name);
+
+// 2
+// use Contructor
+function User(name, age) {
+  this.name = name;
+  this.age = age;
+  this.isAdmin = () => {
+    if (this.name >= "John") {
+      return true;
     }
-  });
-};
-numbers();
+    return false;
+  };
+}
 
-//4
-const Items = () => {
-  const arr = [
-    {
-      name: "david",
-      age: 20,
-    },
-    {
-      name: "mohamed",
-      age: 22,
-    },
-  ];
-
-  arr.map((item) => {
-    return console.log(` hello ${item.name} i'm ${item.age}`);
-  });
-};
-Items();
-
-//5
-const products = [
-  { id: 1, name: "apple", price: 20 },
-  {
-    id: 2,
-    name: "banana",
-    price: 30,
-  },
-  {
-    id: 3,
-    name: "orange",
-    price: 40,
-  },
-];
-const Category = () => {
-  products.map((product) => {
-    return console.log(product);
-  });
-};
-
-Category();
+const user1 = new User("John", 30);
+const user2 = new User("Jane", 28);
+const user3 = new User("Bob", 35);
+console.log(user1.age);
+console.log(user2.age);
+console.log(user3.name);
+console.log(user1.isAdmin());
