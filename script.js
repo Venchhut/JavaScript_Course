@@ -166,3 +166,61 @@ const fetchData2 = async () => {
   }
 };
 fetchData2();
+
+// 10
+// Function to fetch weather data
+const getWeatherData = async (city) => {
+  try {
+    // Simulating an API endpoint (replace with a real one, e.g., OpenWeather API)
+    const apiKey = "your_api_key"; // Replace with a valid API key
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+    // Fetching data
+    const response = await fetch(url);
+
+    // Check if the response is okay
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch weather data for ${city}: ${response.statusText}`
+      );
+    }
+
+    // Parsing JSON data
+    const data = await response.json();
+
+    // Displaying the weather information
+    console.log(`Weather in ${data.name}:`);
+    console.log(`Temperature: ${(data.main.temp - 273.15).toFixed(2)}°C`);
+    console.log(`Description: ${data.weather[0].description}`);
+    console.log(`Wind Speed: ${data.wind.speed} m/s`);
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+};
+
+// Function call to fetch weather for a city
+getWeatherData("Phnom Penh");
+
+// 11
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+let myPromise = new Promise(function (myResolve, myReject) {
+  let x = 0;
+
+  if (x == 0) {
+    myResolve(setTimeout(() => myDisplayer("yes,it's fine"), 3000));
+  } else {
+    myReject("Error");
+  }
+});
+
+myPromise.then(
+  function (value) {
+    myDisplayer(value);
+  },
+  function (error) {
+    myDisplayer(error);
+  }
+);
