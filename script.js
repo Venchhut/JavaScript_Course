@@ -202,6 +202,7 @@ const getWeatherData = async (city) => {
 getWeatherData("Phnom Penh");
 
 // 11
+// promise with interact with dom
 function myDisplayer(some) {
   document.getElementById("demo").innerHTML = some;
 }
