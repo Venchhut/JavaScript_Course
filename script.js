@@ -1,55 +1,168 @@
 // 1
-//async function
-setTimeout(() => {
-  console.log("Task 1");
-}, 2000);
-console.log("Task 2");
-console.log("Task 3");
-console.log("Task 4");
+// doSomething(function (result) {
+//   doSomethingElse(
+//     result,
+//     function (newResult) {
+//       doThirdThing(
+//         newResult,
+//         function (finalResult) {
+//           console.log(`Got the final result: ${finalResult}`);
+//         },
+//         failureCallback
+//       );
+//     },
+//     failureCallback
+//   );
+// }, failureCallback);
 
 // 2
-function task(callback) {
-  setTimeout(() => {
-    console.log("take a shower");
-    callback();
-  }, 2000);
-}
+// const listOfIngredients = [];
 
-function follow() {
-  console.log("Task 2:: drink water");
-  console.log("Task 3: eat breakfast");
-  console.log("Task 4: go to work");
-}
-
-task(follow);
+// doSomething()
+//   .then((url) => {
+//     // `return` keyword now included in front of fetch call.
+//     return fetch(url)
+//       .then((res) => res.json())
+//       .then((data) => {
+//         listOfIngredients.push(data);
+//       });
+//   })
+//   .then(() => {
+//     console.log(listOfIngredients);
+//     // listOfIngredients will now contain data from fetch call.
+//   });
 
 // 3
-
-function asyncFunction() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log("Task 1");
-      resolve();
-    }, 2000);
-  });
-}
-
-asyncFunction().then(() => {
-  console.log("Task 2");
-  console.log("Task 3");
-  console.log("Task 4");
-});
+// Promise
 
 // 4
+const promise = new Promise((resolve, reject) => {
+  resolve("success");
+  reject("failure");
+});
+promise
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error));
 
-async function fetchData() {
+// 5
+// use async/await
+/* 
+async function foo() {
   try {
-    const response = await fetch("https://api.example.com/data");
-    const data = await response.json();
-    console.log(data);
+    const result = await doSomething();
+    const newResult = await doSomethingElse(result);
+    const finalResult = await doThirdThing(newResult);
+    console.log(`Got the final result: ${finalResult}`);
   } catch (error) {
-    console.error(error);
+    failureCallback(error);
   }
 }
 
-fetchData();
+*/
+async function myFunction() {
+  try {
+    const result = await promise;
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+myFunction();
+// use try/catch
+const asyncFunction = async () => {
+  try {
+    const promise = new Promise((resolve, reject) => {
+      resolve("It works!");
+    });
+    const result = await promise;
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Call the function
+asyncFunction();
+
+// 6
+
+const fetchData = () => {
+  return new Promise((resolve, reject) => {
+    console.log("Fetching data...");
+
+    // Simulating a delay for an asynchronous operation
+    setTimeout(() => {
+      const success = true;
+
+      if (success) {
+        resolve("Data fetched successfully!");
+      } else {
+        reject("Failed to fetch data.");
+      }
+    }, 2000);
+  });
+};
+
+// Using the Promise
+fetchData()
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+//7
+const uploadFile = (fileName) => {
+  return new Promise((resolve, reject) => {
+    console.log(`Uploading ${fileName}...`);
+
+    setTimeout(() => {
+      const isUploaded = Math.random() > 0.5; // Simulate success or failure
+
+      if (isUploaded) {
+        resolve(`${fileName} uploaded successfully.`);
+      } else {
+        reject(`Failed to upload ${fileName}.`);
+      }
+    }, 3000); // Simulated delay of 3 seconds
+  });
+};
+
+// Using the Promise
+uploadFile("image.jpg")
+  .then((message) => {
+    console.log(message);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+// 8
+try {
+  const num = 23;
+  const result = num.upperCase();
+  console.log(result);
+} catch (error) {
+  console.log("An error occurred", error.message);
+}
+
+console.log("code work properly");
+
+// 9
+
+const fetchData2 = async () => {
+  try {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/invalid-endpoint"
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log("data not fetched", error.message);
+  }
+};
+fetchData2();
