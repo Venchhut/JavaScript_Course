@@ -25,3 +25,49 @@ singers.sort().reverse();
 for (let singer of singers) {
   console.log(singer);
 }
+
+//4
+// spread operator
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const newArray = [1, 2, ...numbers];
+
+console.log(newArray);
+
+//5
+// rest operator
+const [first, ...rest] = [1, 2, 3, 4];
+console.log(first);
+console.log(rest);
+
+//6
+//destructuring
+const number1 = [10, 20, 30, 40];
+const [a, b, , d] = number1;
+
+console.log(a, b, d);
+
+//7
+//map
+// use map to create a new array
+
+const Counts = [1, 2, 3];
+const squared = Counts.map((num) => num ** 2);
+console.log(squared);
+
+//8
+// reduce
+const items = [
+  { category: "fruit", name: "apple" },
+  { category: "fruit", name: "banana" },
+  { category: "vegetable", name: "carrot" },
+];
+
+const grouped = items.reduce((acc, item) => {
+  acc[item.category] = acc[item.category] || [];
+  acc[item.category].push(item.name);
+  return acc;
+}, {});
+
+console.log(grouped);
