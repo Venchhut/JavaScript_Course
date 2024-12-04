@@ -1,4 +1,5 @@
 // function
+// basic function
 // 1
 function hello() {
   console.log("this is function");
@@ -14,6 +15,7 @@ function welcome(name, age) {
 
 welcome("seyha", 18);
 // 3
+// expression function
 
 function sum(x, y) {
   let result = x + y;
@@ -50,3 +52,32 @@ function isValidEmail(email) {
 }
 console.log(isValidEmail("example@gmail.com"));
 console.log(isValidEmail("examplegmail.com"));
+
+// 6 higher order function
+
+const number3 = [1, 2, 3, 4, 5];
+const data = number3.map((num) => num * num);
+console.log(data);
+
+// 7 function compositon
+const toUpperCase = (str) => str.toUpperCase();
+const String = (str) => `${str}!`;
+const combine = (str) => String(toUpperCase(str));
+
+console.log(combine("welcome to my world 22"));
+
+// 8 recusion
+
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+
+console.log(factorial(10));
+
+function doingSomething(action) {
+  console.log(`i'm drinking ${action}`);
+}
+doingSomething("water");
