@@ -1,83 +1,47 @@
-// function
-// basic function
-// 1
-function hello() {
-  console.log("this is function");
-}
+const data = [
+  {
+    name: { id: 1, nameE: "bopha" },
+    address: { id: 1, place: "siem reap" },
+  },
+  {
+    name: { id: 2, nameE: "sopheak" },
+    address: { id: 2, place: "siem reap" },
+  },
+  {
+    name: { id: 3, nameE: "piseth" },
+    address: { id: 3, place: "battambang" },
+  },
+  {
+    name: { id: 4, nameE: "ratanak" },
+    address: { id: 4, place: "sihanoukville" },
+  },
+];
 
-hello();
+// const filteredData = data.reduce((result, current) => {
+//   // Check if the address place already exists in the result array
+//   const exists = result.find(
+//     (item) => item.address.place === current.address.place
+//   );
 
-// 2
-function welcome(name, age) {
-  console.log(`nice to meet you ${name}`);
-  console.log(`i'm ${age} years old`);
-}
+//   if (!exists) {
+//     // If not exists, add to the result array
+//     result.push(current);
+//   } else {
+//     // If exists, append the name to the existing object
+//     exists.name = Array.isArray(exists.name)
+//       ? [...exists.name, current.name]
+//       : [exists.name, current.name];
+//   }
 
-welcome("seyha", 18);
-// 3
-// expression function
+//   return result;
+// }, []);
 
-function sum(x, y) {
-  let result = x + y;
-  return result;
-}
-let number = sum(2, 4);
-console.log(number);
-// console.log(sum(2, 4));
+// console.log(filteredData);
 
-// 4
+const filteredData = data.reduce((result, current) => {
+  return result.includes(current.address.place)
+    ? result
+    : [current.address.place, ...result];
+}, []);
 
-function isEven(number) {
-  if (number % 2 === 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
-console.log(isEven(10));
-
-// or write ternary operation
-function isEven(number) {
-  return number % 2 === 0 ? true : false;
-}
-console.log(isEven(3));
-
-// 5
-function isValidEmail(email) {
-  if (email.includes("@")) {
-    return "Your email is valid";
-  } else {
-    return "You need to check again";
-  }
-}
-console.log(isValidEmail("example@gmail.com"));
-console.log(isValidEmail("examplegmail.com"));
-
-// 6 higher order function
-
-const number3 = [1, 2, 3, 4, 5];
-const data = number3.map((num) => num * num);
-console.log(data);
-
-// 7 function compositon
-const toUpperCase = (str) => str.toUpperCase();
-const String = (str) => `${str}!`;
-const combine = (str) => String(toUpperCase(str));
-
-console.log(combine("welcome to my world 22"));
-
-// 8 recusion
-
-function factorial(n) {
-  if (n === 0) {
-    return 1;
-  }
-  return n * factorial(n - 1);
-}
-
-console.log(factorial(10));
-
-function doingSomething(action) {
-  console.log(`i'm drinking ${action}`);
-}
-doingSomething("water");
+console.log(filteredData);
