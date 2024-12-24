@@ -59,10 +59,37 @@ const products = [
     price: 40,
   },
 ];
-const Category = () => {
+const category3 = () => {
   products.map((product) => {
     return console.log(product);
   });
 };
+category3();
+// const Category = () => {
+//   products.map((product) => {
+//     return console.log(product);
+//   });
+// };
 
+// Category();
+const Category = () => {
+  products.map((product) => {
+    return console.log(product.name);
+  });
+};
 Category();
+//6
+// simple function
+function add(num1, num2) {
+  const sum = num1 + num2;
+  return sum;
+}
+
+console.log(add(2, 4));
+
+// use  arrow function
+const add1 = (num1, num2) => {
+  const sum = num1 + num2;
+  return sum;
+};
+console.log(add1(2, 4));
