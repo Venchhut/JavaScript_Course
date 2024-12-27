@@ -55,3 +55,11 @@ const isActive = true;
 
 const User = `User is ${isActive ? `active` : `inactive`} `;
 console.log(User);
+
+const isLoggin = true;
+
+function getUser() {
+  return `user is ${isLoggin ? `loggin` : `not loggin`}`;
+}
+const user = getUser();
+console.log(user);
