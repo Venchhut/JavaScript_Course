@@ -52,8 +52,16 @@ function DisplayPerson(props) {
   console.log(`age:${age}`);
   console.log(address);
 }
-
 DisplayPerson(person);
+
+function Person2({ year, number, place }) {
+  // const { year, number, place } = props;
+  console.log(year);
+  console.log(number);
+  console.log(place);
+}
+Person2({ year: "2022", number: "123", place: "kathmandu" });
+
 // with another way
 function DisplayPerson2({ name, age, address }) {
   console.log(`name2: ${name}`);
@@ -75,7 +83,7 @@ const user = [
   },
 ];
 
-const { phone, email } = user[1];
+const { phone, email } = user[0];
 
 console.log(phone, email);
 
@@ -123,7 +131,6 @@ console.log(all);
 
 //11
 //nested object destructuring
-
 const user5 = {
   work: "developer",
   placework: {
@@ -132,6 +139,7 @@ const user5 = {
     country: "camboya",
   },
 };
+
 const {
   work,
   placework: { locate, city, ...yooo },
@@ -140,8 +148,21 @@ console.log(work);
 console.log(locate);
 console.log(city);
 console.log(yooo);
-
 console.log(user5.work);
+
+const workplace = {
+  place2: "kathmandu",
+  age2: 20,
+  job2: "student",
+  family2: ["mom", "dad", "brother", "sister"],
+  location4: {
+    locate2: "Siempre Viejo",
+    city2: "Kathmandu",
+    country2: "camboya",
+  },
+};
+const { place2, location4, family2 } = workplace;
+console.log(place2, location4.country2, family2[3]);
 
 //12
 // destructuring in functions
@@ -154,6 +175,6 @@ function Sport({ football, basket, ...yeyeyey }) {
 Sport({
   football: "soccer",
   basket: "basketball",
-  volleyball: "volleyball",
   ekl: "ekl",
+  volleyball: "volleyball",
 });
