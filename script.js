@@ -1,9 +1,7 @@
 //Template literals are enclosed by backticks (`) instead of single (') or double (") quotes
 //1. String Concatenation
 const name1 = "John";
-
 const hello = `welcome ${name1} to this class.`;
-
 console.log(hello);
 
 //2. String Interpolation
