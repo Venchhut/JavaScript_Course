@@ -1,4 +1,4 @@
-// 1
+//1
 // doSomething(function (result) {
 //   doSomethingElse(
 //     result,
@@ -46,7 +46,7 @@ promise
 
 // 5
 // use async/await
-/* 
+
 async function foo() {
   try {
     const result = await doSomething();
@@ -58,7 +58,7 @@ async function foo() {
   }
 }
 
-*/
+// use try/catch
 async function myFunction() {
   try {
     const result = await promise;
@@ -84,33 +84,24 @@ const asyncFunction = async () => {
 // Call the function
 asyncFunction();
 
-// 6
-
+// promise
 const fetchData = () => {
-  return new Promise((resolve, reject) => {
-    console.log("Fetching data...");
-
-    // Simulating a delay for an asynchronous operation
+  return new Promise((res, rej) => {
+    console.log("Data is fetching...");
     setTimeout(() => {
-      const success = true;
-
-      if (success) {
-        resolve("Data fetched successfully!");
+      const fetched = true;
+      if (fetched) {
+        res("Data is fetching successfully");
       } else {
-        reject("Failed to fetch data.");
+        rej("Data is not fetching");
       }
     }, 2000);
   });
 };
-
 // Using the Promise
 fetchData()
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error));
 
 //7
 const uploadFile = (fileName) => {
@@ -128,7 +119,6 @@ const uploadFile = (fileName) => {
     }, 3000); // Simulated delay of 3 seconds
   });
 };
-
 // Using the Promise
 uploadFile("image.jpg")
   .then((message) => {
@@ -137,6 +127,26 @@ uploadFile("image.jpg")
   .catch((error) => {
     console.error(error);
   });
+
+const uploadVideo = (video) => {
+  return new Promise((resolve, reject) => {
+    console.log(`Uploading ${video}...`);
+
+    setTimeout(() => {
+      const isVideoUploaded = Math.random() > 0.5;
+      if (isVideoUploaded) {
+        resolve(`${video} is uploaded successfully.`);
+      } else {
+        reject(`Failed to upload the ${video}`);
+      }
+    }, 2000);
+  });
+};
+uploadVideo("video.mp4")
+  .then((message) => {
+    console.log(message);
+  })
+  .catch((error) => console.log(error));
 
 // 8
 try {
