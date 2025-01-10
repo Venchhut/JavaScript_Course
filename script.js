@@ -1,19 +1,29 @@
 // function
 // basic function
-// 1
+// 1 simple function without parameters
 function hello() {
   console.log("this is function");
 }
 
 hello();
 
-// 2
+// 2 function with parameters
 function welcome(name, age) {
   console.log(`nice to meet you ${name}`);
   console.log(`i'm ${age} years old`);
 }
 
 welcome("seyha", 18);
+
+function multiply(a, b) {
+  const data = a * b;
+  if (data > 10) {
+    console.log(`${data} is greater than 10`);
+  } else {
+    console.log(`${data} is less than 10`);
+  }
+}
+multiply(10, 3);
 // 3
 // expression function
 
@@ -58,6 +68,9 @@ console.log(isValidEmail("examplegmail.com"));
 const number3 = [1, 2, 3, 4, 5];
 const data = number3.map((num) => num * num);
 console.log(data);
+
+const data4 = [40, 32, 33, 43, 56, 7].filter((num) => num % 2 === 0);
+console.log("d", data4);
 
 // 7 function compositon
 const toUpperCase = (str) => str.toUpperCase();
