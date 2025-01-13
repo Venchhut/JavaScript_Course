@@ -1,109 +1,132 @@
-// type of the async operation
-// Callback
-// Promise
-// Async/Await
-// Event listener...
+//Scope
 
-// 1
-//async function
-setTimeout(() => {
-  console.log("Task 1");
-}, 2000);
-console.log("Task 2");
-console.log("Task 3");
-console.log("Task 4");
+// Global scope
+var global = "velue of global variable";
 
-//
-console.log("first");
+function myfunc() {
+  console.log(global);
+}
+
+myfunc();
 setTimeout(() => {
-  console.log("this will be executed after 1 seconds");
+  console.log("first", global);
 }, 1000);
-console.log("end the program");
+console.log("the", global);
 
-// 2
-function task(callback) {
-  setTimeout(() => {
-    console.log("take a shower");
-    callback();
-  }, 2000);
-}
-function follow() {
-  console.log("Task 2:: drink water");
-  console.log("Task 3: eat breakfast");
-  console.log("Task 4: go to work");
-}
-task(follow);
+// function scope
+const funcName = () => {
+  var name = "hello";
+  console.log(name);
+};
+funcName();
+// console.log("an", name);
+// this will throw an error
 
-function job(callback) {
-  setTimeout(() => {
-    console.log("program is running");
-    callback();
-  }, 2000);
+function multiply(a, b) {
+  var data = a * b;
+  return data;
 }
-function enrivement() {
-  console.log("peace of mind");
-}
-job(enrivement);
+console.log(multiply(4, 3));
 
-//3  using promise
-function asyncFunction() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log("Task 1");
-      resolve();
-    }, 2000);
-  });
+// Block scope
+if (true) {
+  let name = "Socket";
+  console.log(name);
 }
-asyncFunction().then(() => {
-  console.log("Task 2");
-  console.log("Task 3");
-  console.log("Task 4 completed");
-});
+// console.log(name)
+//  this will throw an error
 
-function workTime() {
-  return new Promise((resolve, reject) => {
-    const workTime = "8 hours";
-    if (workTime === "8 hours") {
-      resolve();
-    } else {
-      reject();
-    }
-  });
-}
-workTime()
-  .then(() => {
-    console.log("In working time now");
-  })
-  .then(() => {
-    console.log("Task 2");
-    console.log("Task 3");
-  })
-  .catch(() => {
-    console.log("Can doing something else with the free time ");
-  });
+//closure
+//A closure is created when a function "remembers" its lexical scope,
+// even when the function is executed outside that scope.
 
-// 4 using async/await
-async function fetchData() {
-  try {
-    const response = await fetch("https://api.example.com/data");
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
+for (let i = 0; i < 10; i++) {
+  const log = () => {
+    console.log(i);
+  };
+  setTimeout(log, 1000);
 }
-fetchData();
 
-async function people() {
-  try {
-    const res = await fetch("https://swapi.dev/api/people/1");
-    if (!res.ok) {
-      throw new Error(`something went wrong ${res.status}`);
-    }
-    const person = await res.json();
-    console.log(person.name);
-  } catch (error) {
-    console.log(error);
-  }
+function alertFun(defaultMessage) {
+  return (message = defaultMessage) => {
+    alert(`${message}`);
+  };
 }
-people();
+const alertMessage = alertFun("get up"); // ✅ Pass the default message
+alertMessage(); // Alerts: "get up"
+alertMessage("wake up!"); // Alerts: "wake up!"
+
+function outerFunction(outerVar) {
+  return function innerFunction(innerVar) {
+    console.log(`Outer: ${outerVar}, Inner: ${innerVar}`);
+  };
+}
+const closure = outerFunction("outer value");
+closure("inner value");
+
+const multi = (a) => {
+  return function (b) {
+    return a * b;
+  };
+};
+const result = multi(5);
+console.log(result(3));
+
+//example
+function createAuthManager() {
+  let isLoggedIn = false; // Private variable
+
+  return {
+    login() {
+      isLoggedIn = true;
+      console.log("User logged in.");
+    },
+    logout() {
+      isLoggedIn = false;
+      console.log("User logged out.");
+    },
+    checkStatus() {
+      console.log(`User is ${isLoggedIn ? "logged in" : "logged out"}.`);
+    },
+  };
+}
+
+const auth = createAuthManager();
+
+auth.checkStatus(); // User is logged out.
+auth.login(); // User logged in.
+auth.checkStatus(); // User is logged in.
+auth.logout(); // User logged out.
+auth.checkStatus(); // User is logged out.
+
+//example 2
+function createCart() {
+  const cart = []; // Private cart array
+
+  return {
+    addItem(item) {
+      cart.push(item);
+      console.log(`${item} added to the cart.`);
+    },
+    removeItem(item) {
+      const index = cart.indexOf(item);
+      if (index > -1) {
+        cart.splice(index, 1);
+        console.log(`${item} removed from the cart.`);
+      } else {
+        console.log(`${item} not found in the cart.`);
+      }
+    },
+    viewCart() {
+      console.log("Cart contains:", cart.length ? cart.join(", ") : "nothing.");
+    },
+  };
+}
+
+const myCart = createCart();
+
+myCart.addItem("Apple"); // Apple added to the cart.
+myCart.addItem("Banana"); // Banana added to the cart.
+myCart.viewCart(); // Cart contains: Apple, Banana.
+myCart.removeItem("Apple"); // Apple removed from the cart.
+myCart.viewCart(); // Cart contains: Banana.
