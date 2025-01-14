@@ -47,6 +47,8 @@ const foundUser2 = users5.find((user) => {
 });
 console.log(foundUser2);
 
+//6
+//
 const data = [
   {
     name: { id: 1, nameE: "bopha" },
@@ -88,7 +90,6 @@ const filteredData = data.reduce((result, current) => {
 console.log(filteredData);
 
 // using Set in js
-
 const filteredDataSet = data.reduce((result, current) => {
   const addressSet = new Set(result.map((item) => item.address.place));
   if (!addressSet.has(current.address.place)) {
