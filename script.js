@@ -1,3 +1,52 @@
+//1
+//for each : executes function for each element in the array
+const arr1 = [1, 2, 3];
+arr1.forEach((element) => {
+  console.log(element);
+});
+
+//2
+//map() : transform each element and return new array
+const days = ["monday", "tuesday", "wednesday"];
+const dailyDay = days.map((day) => {
+  return day;
+});
+console.log(dailyDay);
+
+//3
+// filter() : return new array based on the condition
+const arr2 = [3, 4, 5, 6];
+const oddNumber = arr2.filter((num) => {
+  return num % 2 !== 0;
+});
+console.log(oddNumber);
+
+//4
+// reduce(): apply the function to reduce the array to a sigle value
+const arr3 = [1, 2, 3, 4];
+const sum = arr3.reduce((acc, cur) => {
+  return acc + cur;
+});
+console.log(sum);
+
+//5
+//find(): return the first element that matches the condition
+const users5 = [
+  { id: 1, name: "bopha" },
+  { id: 2, name: "sopheak" },
+  { id: 3, name: "piseth" },
+  { id: 4, name: "ratanak" },
+];
+const foundUser = users5.find((user) => {
+  return user.id === 4;
+});
+console.log(foundUser);
+//use includes()
+const foundUser2 = users5.find((user) => {
+  return user.name.includes("sopheak");
+});
+console.log(foundUser2);
+
 const data = [
   {
     name: { id: 1, nameE: "bopha" },
