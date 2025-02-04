@@ -156,4 +156,42 @@ const {
 } = Person;
 console.log(name, city, country);
 
-// s
+//
+
+const myObject = {
+  locate: "test",
+  greet() {
+    console.log(`first ${this.locate}`);
+  },
+};
+myObject.greet();
+//
+
+const myobj = {
+  name: "John",
+  age: 30,
+  greet: function () {
+    console.log(
+      `Hello, my name is ${this.name} and I am ${this.age} years old.`
+    );
+  },
+};
+console.log(myobj.greet());
+//
+
+function greet() {
+  console.log("hi");
+}
+function execute(fn) {
+  fn();
+}
+execute(greet);
+
+function sub(a, b) {
+  const c = a + b;
+  console.log(c);
+}
+function execute(subco) {
+  subco(1, 2);
+}
+console.log(execute(sub));
