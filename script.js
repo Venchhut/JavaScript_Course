@@ -24,7 +24,6 @@ function season() {
 function wait() {
   console.log("wait");
 }
-
 weather(wait);
 
 // 3
@@ -38,7 +37,6 @@ function DisplaySum(sumNum) {
 sum(DisplaySum, 78, 20);
 
 // 4
-
 function call(callback) {
   let song = "The day we met";
 
@@ -48,5 +46,4 @@ function call(callback) {
 function answer() {
   console.log("let's get it back");
 }
-
 call(answer);
