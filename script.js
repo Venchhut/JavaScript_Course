@@ -159,3 +159,11 @@ function isPrime(n) {
 }
 showPrimes(10);
 isPrime(4);
+
+//9
+// arrow function
+const addTwo = (a, b) => {
+  const result = a + b;
+  return result;
+};
+console.log(addTwo(30, 45));
