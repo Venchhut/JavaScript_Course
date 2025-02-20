@@ -1,6 +1,12 @@
+//syntax
+/*
+let func= (param1,param2,param3....) => {
+  return expression;
+  }
+*/
+
 // 1
 // expression function"
-
 // setTimeout(function hello() {
 //   console.log("Hello");
 // }, 3000);
@@ -9,12 +15,11 @@
 setTimeout(() => console.log("Hello"), 2000);
 
 //2
-
 const people = (name, country) => {
   console.log(`who are you? my name is  ${name} i'm from ${country}`);
 };
-
 people("mohamed", "egypt");
+
 // 3
 const numbers = () => {
   const arr = [1, 2, 3, 4, 5, 6];
@@ -78,13 +83,13 @@ const Category = () => {
   });
 };
 Category();
+
 //6
 // simple function
 function add(num1, num2) {
   const sum = num1 + num2;
   return sum;
 }
-
 console.log(add(2, 4));
 
 // use  arrow function
@@ -95,10 +100,10 @@ const add1 = (num1, num2) => {
 console.log(add1(2, 4));
 
 //7
-
 function data() {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 }
+
 const data10 = () => {
   const products = [
     { id: 1, name: "apple", price: 20 },
@@ -110,6 +115,26 @@ const data10 = () => {
       },
     },
   ];
+  const nameFunction = products.filter(
+    (product) => typeof product.name === "function"
+  );
+  nameFunction.map((v) => v.name());
   console.log(products.filter((product) => product.name).map((v) => v.name));
 };
 data10();
+
+//8
+const age = prompt("Enter your age");
+const welcome = age < 18 ? () => alert("hi") : () => alert("hello");
+welcome();
+
+//9
+function ask(question, yes, no) {
+  if (confirm(question)) yes();
+  else no();
+}
+ask(
+  "Do you understand arrow functions?",
+  () => alert("you are smart"),
+  () => alert("you are not smart")
+);
