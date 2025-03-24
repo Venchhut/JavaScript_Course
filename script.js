@@ -1,38 +1,3 @@
-//1
-// doSomething(function (result) {
-//   doSomethingElse(
-//     result,
-//     function (newResult) {
-//       doThirdThing(
-//         newResult,
-//         function (finalResult) {
-//           console.log(`Got the final result: ${finalResult}`);
-//         },
-//         failureCallback
-//       );
-//     },
-//     failureCallback
-//   );
-// }, failureCallback);
-
-// 2
-// const listOfIngredients = [];
-
-// doSomething()
-//   .then((url) => {
-//     // `return` keyword now included in front of fetch call.
-//     return fetch(url)
-//       .then((res) => res.json())
-//       .then((data) => {
-//         listOfIngredients.push(data);
-//       });
-//   })
-//   .then(() => {
-//     console.log(listOfIngredients);
-//     // listOfIngredients will now contain data from fetch call.
-//   });
-
-// 3
 // Promise
 
 //
@@ -45,6 +10,29 @@ const myPromises = new Promise((resolve, reject) => {
   }
 });
 console.log(myPromises);
+
+//
+const releaseDate = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("first release date is 2022");
+  }, 2000);
+});
+releaseDate
+  .then(handlefullfilled, handRejected)
+  .then(handlefullfilled1, handRejected1)
+  .catch(handleError);
+
+//
+const promiseA = new Promise((resolve, reject) => {
+  resolve(777);
+});
+// At this point, "promiseA" is already settled.
+promiseA.then((val) => console.log("asynchronous logging has val:", val));
+console.log("immediate logging");
+
+// produces output in this order:
+// immediate logging
+// asynchronous logging has val: 777
 
 //
 const loadingData = new Promise((resolve, reject) => {
