@@ -35,6 +35,75 @@
 // 3
 // Promise
 
+//
+const myPromises = new Promise((resolve, reject) => {
+  let data = true;
+  if (data) {
+    resolve("Data is valid");
+  } else {
+    reject("Data is not valid");
+  }
+});
+console.log(myPromises);
+
+//
+const loadingData = new Promise((resolve, reject) => {
+  let data = true;
+  setTimeout(() => {
+    if (data) {
+      resolve("Data is loading");
+    } else {
+      reject("Data is not loading");
+    }
+  }, 2000);
+});
+loadingData
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error));
+
+//handling a promise
+/*  syntax: 
+myPromise
+    .then((message) => {
+        console.log("Success:", message);
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    })
+    .finally(() => {
+        console.log("Promise execution completed!");
+    });
+
+*/
+const fetchingData = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve("Step 1: data is fetching");
+  }, 2000);
+});
+fetchingData
+  .then((result) => {
+    console.log(result);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve("Step 2: data is fetched");
+      }, 2000);
+    });
+  })
+  .then((result) => {
+    console.log(result);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve("Step 3: data is processed");
+      }, 2000);
+    });
+  })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
 // 4
 const promise = new Promise((resolve, reject) => {
   resolve("success");
@@ -43,6 +112,25 @@ const promise = new Promise((resolve, reject) => {
 promise
   .then((result) => console.log(result))
   .catch((error) => console.log(error));
+
+//promise all
+const p1 = new Promise((resolve) =>
+  setTimeout(() => resolve("Promise 1"), 2000)
+);
+const p2 = new Promise((resolve) =>
+  setTimeout(() => resolve("Promise 2"), 1000)
+);
+const p3 = new Promise((resolve) =>
+  setTimeout(() => resolve("Promise 3"), 1500)
+);
+
+Promise.all([p1, p2, p3])
+  .then((results) => {
+    console.log("All resolved:", results);
+  })
+  .catch((error) => {
+    console.error("One of the promises failed:", error);
+  });
 
 // 5
 // use async/await
