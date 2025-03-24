@@ -6,6 +6,11 @@ function hello() {
 }
 hello();
 
+function greeting() {
+  alert("Welcome to javaScript");
+}
+greeting();
+
 // local variable
 function speaking() {
   let person = "hela";
@@ -49,7 +54,7 @@ showCout();
 showCout(2);
 showCout(0);
 
-//
+//function with condition
 function multiply(a, b) {
   const data = a * b;
   if (data > 10) {
@@ -117,6 +122,13 @@ const number3 = [1, 2, 3, 4, 5];
 const data = number3.map((num) => num * num);
 console.log(data);
 
+const workPlace = [
+  { name: "seyha", age: 18 },
+  { name: "woka", age: 19 },
+];
+const location = workPlace.map((place) => place.name);
+console.log(location);
+
 const data4 = [40, 32, 33, 43, 56, 7].filter((num) => num % 2 === 0);
 console.log("d", data4);
 
@@ -167,3 +179,15 @@ const addTwo = (a, b) => {
   return result;
 };
 console.log(addTwo(30, 45));
+
+//
+let userName = "Seyhakk";
+function showMessage() {
+  userName = "Woka";
+  let message = "hello " + userName;
+  alert(message);
+}
+
+alert(userName);
+showMessage();
+alert(userName); // Seyhakk
