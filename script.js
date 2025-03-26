@@ -28,7 +28,6 @@ for (let singer of singers) {
 
 //4
 // spread operator
-
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const newArray = [1, 2, ...numbers];
@@ -51,7 +50,6 @@ console.log(a, b, d);
 //7
 //map
 // use map to create a new array
-
 const Counts = [1, 2, 3];
 const squared = Counts.map((num) => num ** 2);
 console.log(squared);
@@ -69,5 +67,25 @@ const grouped = items.reduce((acc, item) => {
   acc[item.category].push(item.name);
   return acc;
 }, {});
-
 console.log(grouped);
+
+//
+const arrColor = ["red", "blue", "green", "yellow", "orange"];
+const result = `${arrColor[0]},${arrColor[1]},${arrColor[2]}`;
+console.log(result);
+
+// map to create a new array and join
+const number = [2, 23, 43, 2];
+const data = number.map((num) => `number is ${num}`).join(",");
+console.log(data);
+
+// rest operator
+const arrNum = [1, 2, 434, 34];
+const lengthArray = [...arrNum, 234];
+console.log(lengthArray);
+
+// concate create a new array and combine the array
+const fruit = ["apple", "banana", "orange", "grape"];
+const water = ["watermelon", "mango", "pineapple"];
+const allFruits = fruit.concat(water);
+console.log(allFruits);
